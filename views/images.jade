@@ -8,4 +8,7 @@ block content
       - var posts = pageData;
       - each post in posts
         .post-tile
-          a(href=post.source): img.img-responsive(src=post.thumbnail, alt=post.title)
+          .tile-text 
+            p #{post.title}
+          a(href=post.source): img.img-responsive.tile-img(src=post.thumbnail, alt=post.title)
+          

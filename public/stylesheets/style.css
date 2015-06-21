@@ -3,12 +3,43 @@
   margin-right: -10px;
 }
 
-.post-tile{
+.post-tile {
   display: inline-block;
   margin: 10px;
+  position: relative;
+  left: 0;
+  top: 0;
 }
-.post-tile img {
+
+.tile-img {
   height: 140px;
   overflow-x: hidden;
   max-width: 140px;
+
+  position: relative; 
+  top: 0; 
+  left: 0;
+
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.tile-img:hover {
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.tile-text {
+  height: 140px;
+  width: 140px;
+  position: absolute; 
+  top: 0px; 
+  left: 0px;
+}
+
+.tile-text p {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 5px;
 }
