@@ -23,7 +23,6 @@ router.get('/', function(req, res, next) {
       var apiData = JSON.parse(apiDataString);
 
       var posts = apiData.data.children;
-
       var pageData = [];
 
       for (var i = 0; i < posts.length; i++) {
@@ -39,6 +38,8 @@ router.get('/', function(req, res, next) {
 });
 
 function GetRelevantBitsFromPost(post){
+  // TODO: sources needs some sanitising:
+  // imgur.com/c9gRkrB => i.imgur.com/c9gRkrB.jpg
   return {
           title : post.data.title,
           source : post.data.url,
