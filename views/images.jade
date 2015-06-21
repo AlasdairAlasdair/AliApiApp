@@ -3,6 +3,5 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  - var urls = pageData
-    each url in urls
-      a(href=url): li= url
+  - each post in pageData
+      a(href=post.source): li= post.title

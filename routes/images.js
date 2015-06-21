@@ -27,8 +27,7 @@ router.get('/', function(req, res, next) {
       var pageData = [];
 
       for (var i = 0; i < posts.length; i++) {
-        var url = posts[i].data.url;
-        pageData.push(url);
+        pageData.push(GetRelevantBitsFromPost(posts[i]));
       };
 
       res.render('images', { title: 'images!', pageData : pageData});
@@ -38,5 +37,13 @@ router.get('/', function(req, res, next) {
   http.request(options, callback).end();
 
 });
+
+function GetRelevantBitsFromPost(post){
+  return {
+          title : post.data.title,
+          source : post.data.url,
+          thumbnail : post.data.thumbnail
+        };
+}
 
 module.exports = router;
