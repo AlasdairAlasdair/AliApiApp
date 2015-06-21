@@ -7,4 +7,4 @@ block content
     .row
       - each post in pageData
         .col-md-2
-          a(href=post.source): li= post.title
+          a(href=post.source): img.img-responsive(src=post.thumbnail, alt=post.title)
