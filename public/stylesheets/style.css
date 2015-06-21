@@ -1,2 +1,14 @@
+.tile-container{
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
 .post-tile{
+  display: inline-block;
+  margin: 10px;
+}
+.post-tile img {
+  height: 140px;
+  overflow-x: hidden;
+  max-width: 140px;
 }

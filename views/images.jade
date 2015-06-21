@@ -4,10 +4,8 @@ block content
   .container
     h1= title
     p Welcome to #{title}
-    - var rows = pageDataAsRows;
-    - each row in rows
-      .row
-        - each post in row
-          .col-md-2
-            .post-tile
-              a(href=post.source): img.img-responsive(src=post.thumbnail, alt=post.title)
+    .tile-container
+      - var posts = pageData;
+      - each post in posts
+        .post-tile
+          a(href=post.source): img.img-responsive(src=post.thumbnail, alt=post.title)

@@ -29,31 +29,11 @@ router.get('/', function(req, res, next) {
         pageData.push(GetRelevantBitsFromPost(posts[i]));
       };
 
-      // should really get accessed from the template
-      var rowsOf6 = ConvertToRows(pageData, 6);
-
-      res.render('images', { title: 'images!', pageData : pageData, pageDataAsRows : rowsOf6 });
+      res.render('images', { title: 'images!', pageData : pageData });
     });
   }
-
   http.request(options, callback).end();
-
 });
-
-function ConvertToRows(data, numCols){
-
-  var outerArray = [];
-  var innerArray = [];
-  for (var i = 0; i < data.length; i++) {
-    innerArray.push(data[i]);
-
-    if (i !== 0 && ((i + 1) % numCols === 0)) {
-      outerArray.push(innerArray);
-      innerArray = [];
-    }
-  }
-  return outerArray;
-}
 
 function GetRelevantBitsFromPost(post){
   // TODO: sources needs some sanitising:
