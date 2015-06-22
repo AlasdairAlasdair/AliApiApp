@@ -5,17 +5,6 @@ var url = require('url');
 
 router.get('/', function(req, res, next) {
 
-  var reqUrl = url.parse(req.url, true);
-  var subRedditName = '/r/' + reqUrl.query.sub;
-  var picsCount = reqUrl.query.picsCount;
-
-  var apiPath = subRedditName + '/top.json?limit=' + picsCount;
-
-  var options = {
-    host: 'www.reddit.com',
-    path: apiPath
-  };
-
   callback = function(response) {  
 
     var apiDataString = '';
@@ -28,7 +17,6 @@ router.get('/', function(req, res, next) {
     // the whole response has been recieved
     response.on('end', function () {
       var apiData = JSON.parse(apiDataString);
-
       var posts = apiData.data.children;
       var pageData = [];
 
@@ -39,6 +27,16 @@ router.get('/', function(req, res, next) {
       res.render('images', { title: subRedditName, pageData : pageData });
     });
   }
+
+  var reqUrl = url.parse(req.url, true);
+  var subRedditName = '/r/' + reqUrl.query.sub;
+  var picsCount = reqUrl.query.picsCount;
+
+  var options = {
+    host: 'www.reddit.com',
+    path: subRedditName + '/top.json?limit=' + picsCount
+  };
+
   http.request(options, callback).end();
 });
 
