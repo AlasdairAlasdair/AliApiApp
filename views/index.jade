@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .container
+    h1= title
+    p Can't face going all the way to Reddit for pictures? Well, you're in luck.
+    div(role="group").btn-group
+      a.btn.btn-default(href="/images?sub=aww&picsCount=28") /r/aww
+      a.btn.btn-default(href="/images?sub=pics&picsCount=28") /r/pics
+      a.btn.btn-default(href="/images?sub=earthporn&picsCount=28") /r/earthporn

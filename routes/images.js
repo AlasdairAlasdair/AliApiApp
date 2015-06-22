@@ -1,12 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var http = require('http');
+var url = require('url');
 
 router.get('/', function(req, res, next) {
 
+  var reqUrl = url.parse(req.url, true);
+  var subRedditName = '/r/' + reqUrl.query.sub;
+  var picsCount = reqUrl.query.picsCount;
+
+  var apiPath = subRedditName + '/top.json?limit=' + picsCount;
+
   var options = {
     host: 'www.reddit.com',
-    path: '/r/aww/top.json?limit=28'
+    path: apiPath
   };
 
   callback = function(response) {  
@@ -29,7 +36,7 @@ router.get('/', function(req, res, next) {
         pageData.push(GetRelevantBitsFromPost(posts[i]));
       };
 
-      res.render('images', { title: '/r/aww', pageData : pageData });
+      res.render('images', { title: subRedditName, pageData : pageData });
     });
   }
   http.request(options, callback).end();
