@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 
   var options = {
     host: 'www.reddit.com',
-    path: '/r/aww/top.json'
+    path: '/r/aww/top.json?limit=28'
   };
 
   callback = function(response) {  
@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
         pageData.push(GetRelevantBitsFromPost(posts[i]));
       };
 
-      res.render('images', { title: 'images!', pageData : pageData });
+      res.render('images', { title: '/r/aww', pageData : pageData });
     });
   }
   http.request(options, callback).end();
