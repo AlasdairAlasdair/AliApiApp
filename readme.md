@@ -5,5 +5,7 @@ Simple NodeJS app that grabs the top posts from some SubReddits and displays the
 You can set the port it runs on using the environment variable NODE_APP_PORT but it defaults to 3000.
 
 To run:
+
 $ npm install
+
 $ nodemon app
